@@ -23,12 +23,6 @@ int cam_w, cam_h;
 
 PGraphics3D canvas;
 PGraphics2D cam;
-String[] marker_path = {
-  "./data/marker/canvas.png",
-  "./data/marker/pen.png",
-  "./data/marker/fluid.png",
-  "./data/marker/eraser.png"
-};
 ARManagement ar;
 Particle p1;
 Particle p2_1;
@@ -54,7 +48,11 @@ void setup() {
   // create ar instances
   canvas = (PGraphics3D) createGraphics(cam_w, cam_h, P3D);
   cam = (PGraphics2D) createGraphics(cam_w, cam_h, P2D);
-  ar = new ARManagement(this, canvas, cam_w, cam_h, marker_path);
+  ar = new ARManagement(this, canvas, cam_w, cam_h);
+  ar.addARMarker("./data/marker/canvas.png");
+  ar.addARMarker("./data/marker/pen.png");
+  ar.addARMarker("./data/marker/fluid.png");
+  ar.addARMarker("./data/marker/eraser.png");
   p1 = new Particle();
   p2_1 = new Particle();
   p2_2 = new Particle();
@@ -93,20 +91,21 @@ void arProcess(){
   // reset canvas
   background(0.0f, 0.0f, 0.0f, 255.0f);
 
-  for(int i=0; i < ar.marker_info.length; i++) {
+  for(Iterator<MarkerInfo> it = ar.iterator(); it.hasNext();) {
+    MarkerInfo m = it.next();
     
     // check timeout
-    if (ar.marker_info[i].inactive_time > 0.5f) continue;
+    if (m.inactive_time > 0.5f) continue;
     
-    ar.beginTransform(i);
-    switch(i) {
+    ar.beginTransform(m);
+    switch(m.getId()) {
       
       case 0: // draw wall points to 3D canvas
         p1.draw(canvas);
         break;
       
       case 1: // add wall points to 3D canvas
-        if (ar.marker_info[0].inactive_time <= 0.5f) p1.add(ar.getRelativeCoordinates(1, 0));
+        if (m.inactive_time <= 0.5f) p1.add(ar.getRelativeCoordinates(1, 0));
         break;
         
       case 2: // draw fluid generateing point to 3D canvas
