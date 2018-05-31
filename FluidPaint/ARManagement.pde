@@ -35,7 +35,7 @@ class ARManagement {
 	public Capture cam;
 	public MultiMarker nya;
   public PMatrix3D projection;
-	private List<MarkerInfo> marker_info;
+	public List<MarkerInfo> marker_info;
 
 	public ARManagement(PApplet tmp_papplet, PGraphics3D tmp_graphics, int w, int h) {
 		init(tmp_papplet, tmp_graphics, w, h);
@@ -56,7 +56,7 @@ class ARManagement {
   }
   
   public void addARMarker(String marker_path){
-    nya.addARMarker(loadImage(marker_path), 16, 25, 80);
+    nya.addARMarker(loadImage(marker_path), 16, 25, 60);
     marker_info.add(new MarkerInfo(marker_info.size()));
   }
 

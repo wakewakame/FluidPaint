@@ -19,6 +19,8 @@ markers job
 
 import com.thomasdiewald.pixelflow.java.fluid.DwFluid2D;
 
+final static boolean inverted_camera = false;
+
 int cam_w, cam_h;
 
 PGraphics3D canvas;
@@ -80,6 +82,10 @@ void setup() {
 void draw() {
   arProcess();
   shaderProcess();
+  
+  fill(0, 128, 198, 255);
+  textSize(30.0f);
+  text("fps : " + frameRate, 30, 60);
 }
 
 void arProcess(){
@@ -105,7 +111,7 @@ void arProcess(){
         break;
       
       case 1: // add wall points to 3D canvas
-        if (m.inactive_time <= 0.5f) p1.add(ar.getRelativeCoordinates(1, 0));
+        if (ar.marker_info.get(0).inactive_time <= 0.5f) p1.add(ar.getRelativeCoordinates(1, 0));
         break;
         
       case 2: // draw fluid generateing point to 3D canvas
@@ -163,6 +169,7 @@ void shaderProcess(){
   refraction.s.uniformTexture("tex_density", fluid.tex_density.src);
   refraction.s.uniformTexture("tex", n.getGLTextureHandle(canvas));
   refraction.s.uniformTexture("cam", n.getGLTextureHandle(cam));
+  refraction.s.uniform1i("inverted_camera", inverted_camera?1:0);
   refraction.endDraw();
   
   n.draw(0, 0, width, height);
