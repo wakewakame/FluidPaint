@@ -6,12 +6,11 @@ import java.util.List;
 
 class MarkerInfo {
   public PMatrix3D modelview; 
-  public float inactive_time; // time from marker lost
+  public float inactive_time = 0.0f; // time from marker lost
   private int id;
   
   {
     modelview = new PMatrix3D(1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f);
-    inactive_time = 0.0f;
   }
   
   public MarkerInfo(int tmp_id) {

@@ -37,7 +37,7 @@ NativeShader obstacles;
 NativeShader refraction;
 DwFluid2D fluid;
 
-NativeFrameBuffer test;
+Slide slide;
 
 void setup() {
   
@@ -45,7 +45,7 @@ void setup() {
   size(640, 480, P3D);
   
   // initialize variable
-  cam_w = 640; cam_h = 480;
+  cam_w = width; cam_h = height;
   
   // create ar instances
   canvas = (PGraphics3D) createGraphics(cam_w, cam_h, P3D);
@@ -76,12 +76,17 @@ void setup() {
   fluid = new DwFluid2D(n.context, cam_w, cam_h, 1);
   fluid.param.dissipation_velocity = 1f;
   fluid.param.dissipation_density = 1f;
-  test = new NativeFrameBuffer(n);
+  
+  slide = new Slide();
 }
 
 void draw() {
+  background(255, 255, 255, 255);
+  
   arProcess();
   shaderProcess();
+  
+  slide.draw();
   
   fill(0, 128, 198, 255);
   textSize(30.0f);
@@ -172,5 +177,23 @@ void shaderProcess(){
   refraction.s.uniform1i("inverted_camera", inverted_camera?1:0);
   refraction.endDraw();
   
-  n.draw(0, 0, width, height);
+  // draw fluid
+  float window_aspect = (float)width / (float)height;
+  float canvas_aspect = (float)n.canvas.width / (float)n.canvas.height;
+  if (window_aspect > canvas_aspect) n.draw(
+    (width - (int)((float)n.canvas.width * (float)height / (float)n.canvas.height)) / 2,
+    0,
+    (int)((float)n.canvas.width * (float)height / (float)n.canvas.height),
+    height
+  );
+  else n.draw(
+    0,
+    (height - (int)((float)n.canvas.height * (float)width / (float)n.canvas.width)) / 2,
+    width,
+    (int)((float)n.canvas.height * (float)width / (float)n.canvas.width)
+  );
+}
+
+void keyPressed(){
+  slide.keyPressed();
 }
