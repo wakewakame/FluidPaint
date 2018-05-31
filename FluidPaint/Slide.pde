@@ -1,6 +1,6 @@
 class Slide {
   PImage[] slides;
-  int num_pages = 14;
+  int num_pages = 13;
   int current_page = 0;
   boolean appear = false;
   
