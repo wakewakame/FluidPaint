@@ -17,7 +17,7 @@ float getDensity(vec2 posn) {
 
 void main() {
 	vec2 posn = gl_FragCoord.xy;
-	if (inverted_camera == 1) posn.x = wh.x - posn.x;
+	posn.x = (wh.x - posn.x) * float(inverted_camera) + posn.x * float(1 - inverted_camera);
 	vec4 tex_col = texture(tex, posn / wh);
 
 	vec2 normal = vec2(
