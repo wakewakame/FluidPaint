@@ -8,7 +8,7 @@
 			  - 1024x1024 : 高解像度のマーカー画像等、マーカー印刷用データ
       - shader : 流体を制御するシェーダ  
       - shader : 発表に使用するスライド  
-	  - ARManagement.pde : nyar4psgのラッパークラス  
+    - ARManagement.pde : nyar4psgのラッパークラス  
     - FluidPaint.pde : メイン  
     - Native.pde : PixelFlowのシェーダ周りのラッパークラス  
     - Particle.pde : 空間に描画するパーティクルのマネジメントクラス  
