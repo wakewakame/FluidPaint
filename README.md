@@ -9,10 +9,10 @@
       - shader : 流体を制御するシェーダ  
       - shader : 発表に使用するスライド  
 	  - ARManagement.pde : nyar4psgのラッパークラス  
-		- FluidPaint.pde : メイン  
-		- Native.pde : PixelFlowのシェーダ周りのラッパークラス  
-		- Particle.pde : 空間に描画するパーティクルのマネジメントクラス  
-		- Slide.pde : 発表に使用するスライドを表示するクラス  
+    - FluidPaint.pde : メイン  
+    - Native.pde : PixelFlowのシェーダ周りのラッパークラス  
+    - Particle.pde : 空間に描画するパーティクルのマネジメントクラス  
+    - Slide.pde : 発表に使用するスライドを表示するクラス  
   - demo : デモ動画  
 
 ### 必要なライブラリ  
