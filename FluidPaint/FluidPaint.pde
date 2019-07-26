@@ -19,7 +19,7 @@ markers job
 
 import com.thomasdiewald.pixelflow.java.fluid.DwFluid2D;
 
-final static boolean inverted_camera = false;
+final static boolean inverted_camera = true;
 
 int cam_w, cam_h;
 
@@ -104,10 +104,7 @@ void arProcess(){
 
   for(Iterator<MarkerInfo> it = ar.iterator(); it.hasNext();) {
     MarkerInfo m = it.next();
-    
-    // check timeout
-    if (m.inactive_time > 0.5f) continue;
-    
+
     ar.beginTransform(m);
     switch(m.getId()) {
       
@@ -116,16 +113,20 @@ void arProcess(){
         break;
       
       case 1: // add wall points to 3D canvas
-        if (ar.marker_info.get(0).inactive_time <= 0.5f) p1.add(ar.getRelativeCoordinates(1, 0));
+        if (m.inactive_time == 0.0f)
+          p1.add(ar.getRelativeCoordinates(1, 0));
         break;
         
       case 2: // draw fluid generateing point to 3D canvas
-        p2_1.draw(canvas);
-        p2_2.draw(canvas);
+        if (m.inactive_time <= 0.5f) {
+          p2_1.draw(canvas);
+          p2_2.draw(canvas);
+        }
         break;
       
       case 3: // reset all wall points
-        p1.reset();
+        if (m.inactive_time == 0.0f)
+          p1.reset();
         break;
 
 
