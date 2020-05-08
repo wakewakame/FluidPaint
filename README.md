@@ -1,4 +1,5 @@
-![demo](https://github.com/wakewakame/FluidPaint/blob/master/demo/hoge.gif?raw=true)  
+![demo1](https://github.com/wakewakame/FluidPaint/blob/master/demo/demo1.gif?raw=true)  
+![demo2](https://github.com/wakewakame/FluidPaint/blob/master/demo/demo2.gif?raw=true)  
 
 # 使い方
 `FluidPaint/FluidPaint.pde`  
