@@ -3,6 +3,8 @@
 precision highp float;
 precision highp int;
 
+out vec4 glFragColor;
+
 uniform vec2 wh;
 uniform float scale;
 uniform sampler2D tex_density;
@@ -31,5 +33,5 @@ void main() {
 	p *= 0.0; //0.9;
 	cam_col = cam_col * (1.0 - p) + vec4(vec3(1.0), 1.0) * p;
 	cam_col = cam_col * (1.0 - tex_col.r) + vec4(0.0, 0.5, 0.75, 1.0) * tex_col.r;
-	gl_FragColor = cam_col;
+	glFragColor = cam_col;
 }

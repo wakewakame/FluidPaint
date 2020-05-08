@@ -3,6 +3,8 @@
 precision highp float;
 precision highp int;
 
+out vec4 glFragColor;
+
 uniform vec2 wh;
 uniform vec4 d;
 uniform sampler2D tex_density;
@@ -13,5 +15,5 @@ void main() {
 	vec4 col = texture(tex, posn / wh);
 	vec4 old = texture(tex_density, posn / wh) * 0.99;
 
-	gl_FragColor = col.g * d + (1.0 - col.g) * old;
+	glFragColor = col.g * d + (1.0 - col.g) * old;
 }

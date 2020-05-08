@@ -46,7 +46,7 @@ class ARManagement {
   private void init(PApplet tmp_papplet, PGraphics3D tmp_graphics, int w, int h) {
     papplet = tmp_papplet;
     graphics = tmp_graphics;
-    cam = new Capture(papplet, w, h);
+    cam = new Capture(papplet, w, h, Capture.list()[0]);
     nya = new MultiMarker(papplet, w, h, "./data/camera/camera_para.dat", NyAR4PsgConfig.CONFIG_PSG);
     projection = nya.getProjectionMatrix().get();
     marker_info = new ArrayList<MarkerInfo>();

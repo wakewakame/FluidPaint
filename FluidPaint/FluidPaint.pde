@@ -76,6 +76,11 @@ void setup() {
   fluid = new DwFluid2D(n.context, cam_w, cam_h, 1);
   fluid.param.dissipation_velocity = 1f;
   fluid.param.dissipation_density = 1f;
+  fluid.addCallback_FluiData(new DwFluid2D.FluidData() {
+    public void update(DwFluid2D fluid) {
+      //brightsmoke
+    }
+  });
   
   slide = new Slide();
 }
@@ -161,12 +166,6 @@ void shaderProcess(){
   obstacles.s.uniformTexture("tex", n.getGLTextureHandle(canvas));
   obstacles.endDraw();
   
-  fluid.addCallback_FluiData(new DwFluid2D.FluidData() {
-    public void update(DwFluid2D fluid) {
-      //brightsmoke
-    }
-  }
-  );
   fluid.update();
   
   refraction.beginDraw();
