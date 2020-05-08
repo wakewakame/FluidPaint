@@ -1,7 +1,7 @@
 ![demo1](https://github.com/wakewakame/FluidPaint/blob/master/demo/demo1.gif?raw=true)  
 ![demo2](https://github.com/wakewakame/FluidPaint/blob/master/demo/demo2.gif?raw=true)  
 
-大学2年のときに作った作品です。  
+大学2年のときに1週間で作った作品です。  
 ARマーカーを用いて空中に絵が描けます。  
 流体のエフェクトを出すこともできます。  
 
