@@ -1,3 +1,5 @@
+![demo](https://github.com/wakewakame/FluidPaint/blob/master/demo/hoge.gif?raw=true)  
+
 # 使い方
 `FluidPaint/FluidPaint.pde`  
 を開いてください。  
