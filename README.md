@@ -1,5 +1,5 @@
-![demo1](https://github.com/wakewakame/FluidPaint/blob/master/demo/demo1.gif?raw=true)  
-![demo2](https://github.com/wakewakame/FluidPaint/blob/master/demo/demo2.gif?raw=true)  
+![demo1](demo/demo1.gif)  
+![demo2](demo/demo2.gif)  
 
 大学2年のときに1週間で作った作品です。  
 ARマーカーを用いて空中に絵が描けます。  
